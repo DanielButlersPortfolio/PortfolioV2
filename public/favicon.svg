@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 477 344.4" style="enable-background:new 0 0 477 344.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_00000128443038535352857200000007820472520913875345_);}
+</style>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="116.7057" y1="344.6012" x2="117.2157" y2="48.8152" gradientTransform="matrix(1 0 0 -1 0 344.4)">
+			<stop  offset="1.727345e-02" style="stop-color:#00AFAF"/>
+			<stop  offset="0.1926" style="stop-color:#06A7A9"/>
+			<stop  offset="0.4681" style="stop-color:#179098"/>
+			<stop  offset="0.8074" style="stop-color:#326C7C"/>
+			<stop  offset="1" style="stop-color:#44546A"/>
+		</linearGradient>
+		<path class="st0" d="M0,344.3V0h93.6c88.7,0,140.7,70.7,140.7,170.8c0,102.4-52.4,173.6-140.4,173.6H0V344.3z M71.9,86.3v169.9
+			h20.3c46.4,0,67-35.8,67-84.5c0-49.6-20.9-85.4-67.4-85.4H71.9L71.9,86.3z"/>
+		
+			<linearGradient id="SVGID_00000005245094513229914130000012664919605965819783_" gradientUnits="userSpaceOnUse" x1="367.7979" y1="345.0444" x2="368.308" y2="49.2581" gradientTransform="matrix(1 0 0 -1 0 344.4)">
+			<stop  offset="1.727345e-02" style="stop-color:#00AFAF"/>
+			<stop  offset="0.1926" style="stop-color:#06A7A9"/>
+			<stop  offset="0.4681" style="stop-color:#179098"/>
+			<stop  offset="0.8074" style="stop-color:#326C7C"/>
+			<stop  offset="1" style="stop-color:#44546A"/>
+		</linearGradient>
+		<path style="fill:url(#SVGID_00000005245094513229914130000012664919605965819783_);" d="M383.8,344.3H261.5V0H379
+			c51.7,0,80.3,39.9,80.3,93.2c0,23-8,46.8-22.3,61.1c23,13.8,38.1,45,38.1,82.6C475,298,442.5,344.3,383.8,344.3z M331.5,78v56.5
+			h36c17.1,0,24.4-13.3,24.4-28.5c0-14.7-6.3-28-24.1-28H331.5z M331.5,195.6v71.6H375c22,0,31.1-17,31.1-36.3
+			c0-18.4-7.7-35.4-30.7-35.4L331.5,195.6L331.5,195.6z"/>
+	</g>
+</g>
+</svg>
