@@ -1,16 +1,19 @@
 import React from 'react';
+import { darkModeContext, screenWithContext } from '../Context';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import sendMailFunction from '../../src/functions/sendMail';
 
-export default function ContactForm(props) {
-  var [formData, setFormData] = React.useState({
+export default function ContactForm() {
+  const [formData, setFormData] = React.useState({
     name: '',
     mail: '',
     message: '',
     tel: '',
   });
+  const { darkMode } = React.useContext(darkModeContext);
+  const { windowWidth } = React.useContext(screenWithContext);
   var [formBtnOn, setFormBtnOn] = React.useState(false);
 
   const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -20,74 +23,75 @@ export default function ContactForm(props) {
     event.preventDefault();
 
     if (formData.mail.match(mailRegex) && formData.name.indexOf(' ') > -1 && (formData.tel.match(telRegex) || formData.tel == '') && formData.message.length > 2) {
-      document.querySelector('.contact-form-submit-btn');
+      sendMailFunction(...formData);
     } else {
       alert('Please fill out all the Required fields correctly');
     }
   }
 
-  function handleChange(event) {
-    setFormData((prevFormData) => {
-      let name = event.target.name;
-      let value = event.target.value;
-
-      return { ...prevFormData, [name]: value };
-    });
+  React.useEffect(() => {
     if (formData.mail.match(mailRegex) && formData.name.indexOf(' ') > -1 && (formData.tel.match(telRegex) || formData.tel == '') && formData.message.length > 2) {
       setFormBtnOn(true);
     } else {
       setFormBtnOn(false);
     }
+  });
+
+  function handleChange(event) {
+    setFormData((prevFormData) => {
+      let name = event.target.name;
+      let value = event.target.value;
+      return { ...prevFormData, [name]: value };
+    });
   }
+
   return (
-    <section className={'section-form d-flex justify-content-center flex-column bg-light pt-7 mt-5 pb-10' + (props.windowWidth < 1400 ? ' pb-5' : ' ')} id='contact'>
+    <section className={'section-form d-flex justify-content-center flex-column pt-7 mt-5 pb-10' + (windowWidth < 1400 ? ' pb-5' : ' ') + (darkMode ? ' bg-dark' : ' bg-light')} id='contact'>
       <h2 className='Form-subheading subheading fs-6 mb-3 d-flex justify-content-center'>CONTACT</h2>
-      <h1 className='Form-heading fs-1 fw-bold m-0 d-flex justify-content-center'>want to tell me something?</h1>
+      <h1 className={'Form-heading fs-1 fw-bold m-0 d-flex justify-content-center ' + (darkMode && ' text-light')}>want to tell me something?</h1>
       <Form
         className={
-          'contact-form d-flex justify-content-center bg-light mt-2 ' +
-          (props.windowWidth < 1400 ? ' flex-column' : ' mb-5 ') +
-          (props.windowWidth > 850 && props.windowWidth < 1400 ? ' flex-column-reverse' : '')
+          'contact-form d-flex justify-content-center mt-2 ' +
+          (windowWidth < 1400 ? ' flex-column' : ' mb-5 ') +
+          (windowWidth > 850 && windowWidth < 1400 ? ' flex-column-reverse' : '') +
+          (darkMode ? ' bg-dark' : ' bg-light')
         }>
-        <Form.Group className={'mt-5 m-3 d-flex justify-content-start' + (props.windowWidth < 1400 ? ' m-auto' : ' ') + (props.windowWidth > 850 && props.windowWidth < 1400 ? ' ' : ' flex-column ')}>
-          <div className={props.windowWidth < 1400 && props.windowWidth > 850 ? 'mr-5' : ' '}>
-            <Form.Label className='text-dark'>Full Name*</Form.Label>
+        <Form.Group className={'mt-5 m-3 d-flex justify-content-start ' + (windowWidth < 1400 ? ' m-auto' : ' ') + (windowWidth > 850 && windowWidth < 1400 ? ' ' : ' flex-column ')}>
+          <div className={windowWidth < 1400 && windowWidth > 850 ? 'mr-5' : ' '}>
+            <Form.Label className={darkMode ? 'text-light' : 'text-dark'}>Full Name*</Form.Label>
             <Form.Control
               name='name'
               type='text'
               placeholder='Daniel Butler'
-              className={'mb-4 contact-form-input ' + (formData.name.indexOf(' ') > -1 || formData.name == '' ? '' : ' bg-danger ')}
+              className={'mb-4 contact-form-input ' + (darkMode ? ' bg-dark text-light ' : '') + (formData.name.indexOf(' ') > -1 || formData.name == '' ? '' : ' bg-danger ')}
               size='lg'
               onChange={handleChange}
-              value={formData.name}
               tabIndex={1}
             />
-            <Form.Label className='text-dark'>E-Mail*</Form.Label>
+            <Form.Label className={darkMode ? 'text-light' : 'text-dark'}>E-Mail*</Form.Label>
             <Form.Control
               name='mail'
               type='email'
               placeholder='me@mywebsite.com'
-              className={'mb-4 contact-form-input ' + (formData.mail.match(mailRegex) || formData.mail == '' ? '' : ' bg-danger ')}
+              className={'mb-4 contact-form-input ' + (darkMode ? ' bg-dark text-light ' : '') + (formData.mail.match(mailRegex) || formData.mail == '' ? '' : ' bg-danger ')}
               size='lg'
               onChange={handleChange}
-              value={formData.mail}
               tabIndex={2}
             />
           </div>
           <div className='h-100 d-flex flex-column'>
-            <Form.Label className='text-dark'>Tel (optional)</Form.Label>
+            <Form.Label className={darkMode ? 'text-light' : 'text-dark'}>Tel (optional)</Form.Label>
             <Form.Control
               name='tel'
               type='tel'
               placeholder='+41 12 345 67 09'
-              className={'mb-4 contact-form-input ' + (formData.tel.match(telRegex) || formData.tel == '' || formData.tel == '' ? '' : ' bg-danger ')}
+              className={'mb-4 contact-form-input ' + (darkMode ? ' bg-dark text-light ' : '') + (formData.tel.match(telRegex) || formData.tel == '' || formData.tel == '' ? '' : ' bg-danger ')}
               size='lg'
               onChange={handleChange}
-              value={formData.tel}
               tabIndex={3}
             />
-            {props.windowWidth > 850 && <Form.Label className='text-dark'>* Required</Form.Label>}
-            {props.windowWidth > 850 && (
+            {windowWidth > 850 && <Form.Label className={darkMode ? 'text-light' : 'text-dark'}>* Required</Form.Label>}
+            {windowWidth > 850 && (
               <Button variant='secondary' type='submit' className='contact-form-submit-btn  p-2 mt-auto ' size='lg' onClick={handleClick} tabIndex={5} disabled={!formBtnOn}>
                 SEND NOW
               </Button>
@@ -95,20 +99,20 @@ export default function ContactForm(props) {
           </div>
         </Form.Group>
 
-        <Form.Group className={'m-3 d-flex justify-content-between flex-column ' + (props.windowWidth < 1400 ? ' m-auto' : ' mt-5')}>
-          <Form.Label className='text-dark'>Message*</Form.Label>
+        <Form.Group className={'m-3 d-flex justify-content-between flex-column ' + (windowWidth < 1400 ? ' m-auto' : ' mt-5')}>
+          <Form.Label className={darkMode ? 'text-light' : 'text-dark'}>Message*</Form.Label>
           <Form.Control
             name='message'
             as='textarea'
             placeholder='Enter text....'
-            className={'contact-form-text-input pb-2' + (formData.message.length > 2 || formData.message == '' || formData.message == '' ? '' : ' bg-danger ')}
+            className={
+              'contact-form-text-input pb-2' + (darkMode ? ' bg-dark text-light ' : '') + (formData.message.length > 2 || formData.message == '' || formData.message == '' ? '' : ' bg-danger ')
+            }
             size='lg'
             onChange={handleChange}
-            value={formData.message}
             tabIndex={4}
-            // style={{ width: '25rem' }} for phone
           />
-          {props.windowWidth <= 850 && (
+          {windowWidth <= 850 && (
             <>
               <Form.Label className='text-dark mt-4'>* Required</Form.Label>
               <Button variant='secondary' type='submit' className='contact-form-submit-btn  p-2 mt-auto ' size='lg' onClick={handleClick} tabIndex={5} disabled={!formBtnOn}>

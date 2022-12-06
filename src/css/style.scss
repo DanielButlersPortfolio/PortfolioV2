@@ -97,6 +97,7 @@ $dark-shadow-level-3: 0 3px 8px 1px rgba(0, 0, 0, 0.9);
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -138,6 +139,22 @@ a {
   margin-left: auto;
 }
 
+.ml-2 {
+  margin-left: 2rem;
+}
+
+.ml-3 {
+  margin-left: 3rem;
+}
+
+.ml-4 {
+  margin-left: 4rem;
+}
+
+.ml-5 {
+  margin-left: 5rem;
+}
+
 
 .pt-7 {
   padding-top: 7rem;
@@ -151,11 +168,32 @@ a {
   margin-right: 4rem;
 }
 
-
-
 .main-nav-bar {
   width: 100vw;
   height: 67.5px;
+}
+
+.navLinkIsActive a {
+  color: $subheading !important;
+}
+
+.nav-link {
+  margin: 0 0.25rem 0 0.25rem;
+  vertical-align: middle;
+}
+
+.navbar-btn {
+  margin: -1px;
+}
+
+.navbar-toggle {
+  border: solid 3px $subheading;
+}
+
+.navbar-dark-btn-icon,
+.navbar-light-btn-icon {
+  height: 1rem;
+  width: 1rem;
 }
 
 .subheading {
@@ -228,6 +266,7 @@ a {
 .hero-text,
 .hero-title {
   max-width: 40rem;
+  padding: 0.5rem;
   color: $color-black;
 }
 
@@ -239,8 +278,6 @@ a {
 .hero-arrow-up {
   display: none;
 }
-
-
 
 .hero-arrow-up-ico:hover {
   transform: translateY(-1em);
@@ -263,7 +300,6 @@ a {
   height: auto;
   padding: 10rem;
 }
-
 
 .hobby-picture-gird {
   transition: all 0.3s;
@@ -294,7 +330,6 @@ a {
   z-index: 10;
 }
 
-
 // figures 
 .hobbies-figure {
   float: left;
@@ -305,6 +340,11 @@ a {
 .hobbies-figure-title {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
+}
+
+.hobby-figure-icon {
+  height: 1.75rem;
+  margin-right: 0.5rem;
 }
 
 .hobbies-figure-text {
@@ -374,6 +414,24 @@ a {
   margin-bottom: 3rem;
 }
 
+.loading-div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+}
+
+.loading-img {
+  position: absolute;
+  padding: 15%;
+  height: 100vh;
+  width: 100vw;
+
+  animation: spin 4s infinite linear;
+}
+
 // media querrys
 
 
@@ -397,7 +455,7 @@ a {
 
   .hobby-img:hover {
     z-index: 2;
-    transform: scale(1.25);
+    transform: scale(1.05);
   }
 
   .footer-btn-img-up:hover {
@@ -554,5 +612,19 @@ a {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

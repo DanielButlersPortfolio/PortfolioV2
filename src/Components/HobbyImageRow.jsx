@@ -6,7 +6,7 @@ import { Row, Col, Image } from 'react-bootstrap';
 export default function HobbyImageRow(props) {
   return (
     <Row xs={12}>
-      <Col xs={4} className='p-2 hobby-img' >
+      <Col xs={4} className='p-2 hobby-img'>
         <Image
           src={props.hobby1.image}
           alt={props.hobby1.imageAltText}
@@ -17,7 +17,7 @@ export default function HobbyImageRow(props) {
           }}
         />
       </Col>
-      <Col xs={4} className='p-2 hobby-img' >
+      <Col xs={4} className='p-2 hobby-img'>
         <Image
           src={props.hobby2.image}
           alt={props.hobby2.imageAltText}
@@ -28,7 +28,7 @@ export default function HobbyImageRow(props) {
           }}
         />
       </Col>
-      <Col xs={4} className='p-2 hobby-img' >
+      <Col xs={4} className='p-2 hobby-img'>
         <Image
           src={props.hobby3.image}
           alt={props.hobby3.imageAltText}

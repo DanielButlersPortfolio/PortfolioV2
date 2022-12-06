@@ -1,4 +1,12 @@
+import React from 'react';
+import { darkModeContext, screenWithContext } from '../Context';
+
 export default function SkillPoints(props) {
+  const { darkMode } = React.useContext(darkModeContext);
+  const { windowWidth } = React.useContext(screenWithContext);
+
+  let coveredPoints = props.coveredPoints.split(',');
+
   let listObj = {
     list1: [],
     list2: [],
@@ -7,17 +15,42 @@ export default function SkillPoints(props) {
     list5: [],
   };
 
-  if (props.windowWidth > 1000) {
-    for (let index = 0; index < props.ListOfPoints.length; ) {
-      props.ListOfPoints[index] && listObj.list1.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+  if (windowWidth > 1000) {
+    for (let index = 0; index < coveredPoints.length; ) {
+      coveredPoints[index] &&
+        listObj.list1.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
-      props.ListOfPoints[index] && listObj.list2.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+      coveredPoints[index] &&
+        listObj.list2.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
-      props.ListOfPoints[index] && listObj.list3.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+      coveredPoints[index] &&
+        listObj.list3.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
-      props.ListOfPoints[index] && listObj.list4.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+      coveredPoints[index] &&
+        listObj.list4.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
-      props.ListOfPoints[index] && listObj.list5.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+      coveredPoints[index] &&
+        listObj.list5.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
     }
     return (
@@ -30,10 +63,20 @@ export default function SkillPoints(props) {
       </div>
     );
   } else {
-    for (let index = 0; index < props.ListOfPoints.length; ) {
-      props.ListOfPoints[index] && listObj.list1.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+    for (let index = 0; index < coveredPoints.length; ) {
+      coveredPoints[index] &&
+        listObj.list1.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
-      props.ListOfPoints[index] && listObj.list2.push(<li key={index}>{props.ListOfPoints[index]}</li>);
+      coveredPoints[index] &&
+        listObj.list2.push(
+          <li key={index} className={darkMode ? ' text-light' : ' text-dark'}>
+            {coveredPoints[index]}
+          </li>
+        );
       index++;
     }
     return (
